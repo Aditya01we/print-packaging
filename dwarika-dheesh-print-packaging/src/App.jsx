@@ -1,14 +1,23 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import {
   ArrowRight,
-  CheckCircle2,
+  ChevronDown,
   Factory,
   Menu,
-  Package,
-  Phone,
-  Send,
+  PackageCheck,
+  Search,
+  ShieldCheck,
+  Sparkles,
   X,
+  Boxes,
+  Printer,
+  Phone,
+  Mail,
+  CheckCircle2,
+  MessageCircle,
+  MoveUpRight,
 } from "lucide-react";
 
 import service1 from "./assets/service-1.jpg";
@@ -19,142 +28,241 @@ import service4 from "./assets/service-4.jpg";
 const services = [
   {
     title: "Folding / Mono Cartons",
-    short: "Folding / Mono cartons",
     image: service1,
+    icon: Boxes,
+    tag: "Cartons",
   },
   {
-    title: "Offset Printing",
-    short: "Offset Printing for U.V + texture",
+    title: "Offset Printing for UV + Texture",
     image: service2,
+    icon: Printer,
+    tag: "Printing",
   },
   {
-    title: "Foil Printing",
-    short: "Foil printing — all types",
+    title: "Foil Printing — All Types",
     image: service3,
+    icon: Sparkles,
+    tag: "Finishing",
   },
   {
-    title: "Corrugated Boxes",
-    short: "Corrugated boxes and printing",
+    title: "Corrugated Boxes & Printing",
     image: service4,
+    icon: PackageCheck,
+    tag: "Corrugated",
   },
 ];
 
 const capabilities = [
-  "Folding / Mono Cartons",
-  "Offset Printing for U.V + Texture",
-  "Foil Printing",
-  "Corrugated Boxes and Printing",
+  [
+    "Custom Packaging",
+    "Packaging manufactured around your product, dimensions and brand requirements.",
+  ],
+  [
+    "Print & Finish",
+    "Offset printing with premium finishing options including UV, texture and foil effects.",
+  ],
+  [
+    "Corrugated Solutions",
+    "Strong corrugated boxes with printing for practical transport and presentation needs.",
+  ],
+  [
+    "One Packaging Destination",
+    "A focused packaging partner covering cartons, printing, finishing and boxes.",
+  ],
 ];
 
-const processSteps = [
-  {
-    number: "01",
-    title: "Understand",
-    text: "Share your packaging requirement.",
-  },
-  {
-    number: "02",
-    title: "Print",
-    text: "Choose the appropriate print solution.",
-  },
-  {
-    number: "03",
-    title: "Finish",
-    text: "Add finishing and packaging details.",
-  },
-  {
-    number: "04",
-    title: "Deliver",
-    text: "Move from approved work to production.",
-  },
+const steps = [
+  [
+    "01",
+    "Discuss",
+    "Share your product, packaging requirement and preferred finish.",
+  ],
+  [
+    "02",
+    "Design",
+    "Finalize the box structure, artwork and print/finish direction.",
+  ],
+  [
+    "03",
+    "Produce",
+    "Manufacturing and printing are handled with a quality-focused workflow.",
+  ],
+  [
+    "04",
+    "Deliver",
+    "Your finished packaging is prepared for use across your product line.",
+  ],
 ];
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
 
-  const closeMenu = () => {
-    setMenuOpen(false);
+  const filteredServices = useMemo(() => {
+    const q = query.trim().toLowerCase();
+
+    if (!q) {
+      return services;
+    }
+
+    return services.filter((service) =>
+      `${service.title} ${service.tag}`.toLowerCase().includes(q)
+    );
+  }, [query]);
+
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+    });
+
+    setOpen(false);
   };
 
   return (
     <div className="site">
 
-      {/* ================= NAVBAR ================= */}
+      {/* TOP BAR */}
+      <div className="topline">
+        <div className="container topline-inner">
 
-      <header className="navbar">
-        <a
-          className="brand"
-          href="#home"
-          onClick={closeMenu}
-        >
-          <span className="brand-mark">
-            DD
+          <span>
+            <Factory size={14} />
+            Manufacturing
           </span>
 
           <span>
-            <strong>DWARIKA DHEESH</strong>
-            <small>PRINT PACKAGING</small>
+            One Destination For All Your Packaging Needs
           </span>
-        </a>
 
-        <button
-          className="menu-button"
-          aria-label="Toggle navigation"
-          onClick={() => setMenuOpen((value) => !value)}
-        >
-          {menuOpen ? (
-            <X size={24} />
-          ) : (
-            <Menu size={24} />
-          )}
-        </button>
+          <span>
+            Quality • Print • Packaging
+          </span>
 
-        <nav
-          className={`nav-links ${
-            menuOpen ? "open" : ""
-          }`}
-        >
-          <a href="#home" onClick={closeMenu}>
-            Home
-          </a>
+        </div>
+      </div>
 
-          <a href="#about" onClick={closeMenu}>
-            About
-          </a>
 
-          <a href="#solutions" onClick={closeMenu}>
-            Solutions
-          </a>
+      {/* HEADER */}
+      <header className="header">
 
-          <a href="#process" onClick={closeMenu}>
-            Process
-          </a>
+        <div className="container header-main">
 
-          <a href="#contact" onClick={closeMenu}>
-            Contact
-          </a>
-
-          <a
-            className="nav-cta"
-            href="#contact"
-            onClick={closeMenu}
+          {/* BRAND */}
+          <button
+            className="brand"
+            onClick={() => scrollTo("home")}
+            aria-label="Go to home"
           >
-            Get a Quote
-            <ArrowRight size={16} />
-          </a>
+            <span className="brand-mark">
+              DD
+            </span>
+
+            <span>
+              <b>DWARIKA DHEESH</b>
+              <small>PRINT PACKAGING</small>
+            </span>
+          </button>
+
+
+          {/* SEARCH */}
+          <div className="search-wrap">
+
+            <Search size={18} />
+
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search packaging solutions..."
+            />
+
+            <button
+              onClick={() => scrollTo("services")}
+            >
+              Search
+            </button>
+
+          </div>
+
+
+          {/* CONTACT */}
+          <div className="header-contact">
+
+            <span>
+              <MessageCircle size={18} />
+              WhatsApp / Call
+            </span>
+
+            <span>
+              <Mail size={18} />
+              Business Enquiries
+            </span>
+
+          </div>
+
+
+          {/* MOBILE MENU */}
+          <button
+            className="menu-btn"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X /> : <Menu />}
+          </button>
+
+        </div>
+
+
+        {/* NAVIGATION */}
+        <nav className={`nav ${open ? "nav-open" : ""}`}>
+
+          <div className="container nav-inner">
+
+            <button onClick={() => scrollTo("services")}>
+              Packaging Solutions
+              <ChevronDown size={15} />
+            </button>
+
+            <button onClick={() => scrollTo("services")}>
+              Our Services
+              <ChevronDown size={15} />
+            </button>
+
+            <button onClick={() => scrollTo("capabilities")}>
+              Capabilities
+            </button>
+
+            <button onClick={() => scrollTo("process")}>
+              Process
+            </button>
+
+            <button onClick={() => scrollTo("about")}>
+              About Us
+            </button>
+
+            <button
+              className="quote-btn"
+              onClick={() => scrollTo("contact")}
+            >
+              Get A Quote
+              <ArrowRight size={16} />
+            </button>
+
+          </div>
+
         </nav>
+
       </header>
+
 
       <main>
 
-        {/* ================= HERO ================= */}
-
+        {/* HERO */}
         <section
-          className="hero"
           id="home"
+          className="hero"
         >
-          <div className="hero-shape hero-shape-one" />
-          <div className="hero-shape hero-shape-two" />
+
+          <div className="hero-pattern" />
 
           <div className="container hero-grid">
 
@@ -169,119 +277,121 @@ function App() {
                 y: 0,
               }}
               transition={{
-                duration: 0.7,
+                duration: 0.6,
               }}
             >
+
               <div className="eyebrow">
                 <span />
-                PRINT • PACKAGING • MANUFACTURING
+                PRINT • PACKAGING • FINISHING
               </div>
+
 
               <h1>
-                Packaging that
-                <span> makes an impact.</span>
+                Packaging that makes your{" "}
+                <em>product</em> stand out.
               </h1>
 
-              <p className="hero-text">
-                One destination for all your packaging
-                needs — from cartons and offset printing
-                to foil printing and corrugated packaging.
+
+              <p>
+                From folding and mono cartons to offset printing,
+                foil finishing and corrugated boxes — Dwarika
+                Dheesh Print Packaging brings your packaging
+                requirement together in one destination.
               </p>
 
+
               <div className="hero-actions">
-                <a
-                  className="btn btn-primary"
-                  href="#solutions"
+
+                <button
+                  className="primary"
+                  onClick={() => scrollTo("contact")}
                 >
-                  Explore Solutions
+                  Discuss Your Requirement
                   <ArrowRight size={18} />
-                </a>
+                </button>
 
-                <a
-                  className="btn btn-light"
-                  href="#contact"
+
+                <button
+                  className="text-btn"
+                  onClick={() => scrollTo("services")}
                 >
-                  Talk to Us
-                </a>
+                  Explore Services
+                  <MoveUpRight size={17} />
+                </button>
+
               </div>
 
-              <div className="hero-points">
+
+              <div className="hero-proof">
+
                 <span>
-                  <CheckCircle2 size={17} />
-                  Manufacturing focused
+                  <CheckCircle2 />
+                  Custom-focused
                 </span>
 
                 <span>
-                  <CheckCircle2 size={17} />
-                  Custom packaging
+                  <CheckCircle2 />
+                  Print & finishing
                 </span>
+
+                <span>
+                  <CheckCircle2 />
+                  Packaging solutions
+                </span>
+
               </div>
+
             </motion.div>
 
-            {/* HERO IMAGE */}
 
+            {/* HERO ART */}
             <motion.div
-              className="hero-visual"
+              className="hero-art"
               initial={{
                 opacity: 0,
-                scale: 0.95,
+                scale: 0.96,
               }}
               animate={{
                 opacity: 1,
                 scale: 1,
               }}
               transition={{
-                duration: 0.8,
-                delay: 0.1,
+                duration: 0.7,
+                delay: 0.15,
               }}
             >
-              <div className="visual-card">
 
-                <div className="visual-top">
-                  <span>
-                    OUR SOLUTIONS
-                  </span>
-
-                  <Package size={21} />
-                </div>
-
-                <img
-                  src={service2}
-                  alt="Dwarika Dheesh printing packaging"
-                />
-
-                <div className="visual-bottom">
-
-                  <div>
-                    <span className="visual-label">
-                      DWARIKA DHEESH
-                    </span>
-
-                    <h3>
-                      Print Packaging
-                    </h3>
-                  </div>
-
-                  <span className="visual-arrow">
-                    <ArrowRight size={20} />
-                  </span>
-
-                </div>
-
+              <div className="art-card art-one">
+                <span>PRINT</span>
+                <b>PREMIUM</b>
+                <small>FINISHING</small>
               </div>
 
-              <div className="floating-card">
 
-                <Factory size={20} />
+              <div className="art-card art-two">
+                <span>PACK</span>
+                <b>SMART</b>
+                <small>DESIGN</small>
+              </div>
+
+
+              <div className="art-card art-three">
+                <span>BUILD</span>
+                <b>STRONG</b>
+                <small>BOXES</small>
+              </div>
+
+
+              <div className="art-label">
+
+                <span>01</span>
 
                 <div>
-                  <strong>
-                    Print Packaging
-                  </strong>
-
-                  <span>
-                    Manufacturing
-                  </span>
+                  <b>One Destination</b>
+                  <small>
+                    For All Your Packaging Needs
+                  </small>
                 </div>
 
               </div>
@@ -289,314 +399,394 @@ function App() {
             </motion.div>
 
           </div>
+
         </section>
 
-        {/* ================= ABOUT ================= */}
 
-        <section
-          className="intro section"
-          id="about"
-        >
-          <div className="container two-col">
+        {/* BENEFITS */}
+        <section className="benefits">
 
-            <motion.div
-              initial={{
-                opacity: 0,
-                x: -25,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-            >
-              <div className="section-kicker">
-                WHO WE ARE
-              </div>
+          <div className="container benefit-grid">
 
-              <h2>
-                Built for better
-                <span> packaging.</span>
-              </h2>
-            </motion.div>
+            {[
+              [
+                Factory,
+                "Manufacturing",
+                "Packaging made with a production-first approach.",
+              ],
+              [
+                Sparkles,
+                "Premium Finishing",
+                "UV, texture and foil printing options.",
+              ],
+              [
+                PackageCheck,
+                "Custom Solutions",
+                "Built around your product and requirement.",
+              ],
+              [
+                ShieldCheck,
+                "Quality Focused",
+                "Attention to print, finish and final presentation.",
+              ],
+            ].map(([Icon, title, text], index) => (
 
-            <motion.div
-              className="intro-text"
-              initial={{
-                opacity: 0,
-                x: 25,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-            >
-              <p>
-                Dwarika Dheesh Print Packaging is focused
-                on print and packaging manufacturing,
-                bringing multiple packaging capabilities
-                together under one destination.
-              </p>
-
-              <p>
-                From printing to packaging solutions,
-                the website presents the company's
-                capabilities in a clean and simple way.
-              </p>
-            </motion.div>
-
-          </div>
-        </section>
-
-        {/* ================= SOLUTIONS ================= */}
-
-        <section
-          className="solutions section"
-          id="solutions"
-        >
-          <div className="container">
-
-            <div className="section-heading">
-
-              <div>
-                <div className="section-kicker">
-                  OUR SOLUTIONS
-                </div>
-
-                <h2>
-                  Print & packaging
-                  <span> solutions.</span>
-                </h2>
-              </div>
-
-              <p>
-                Explore our printing and packaging
-                capabilities in one place.
-              </p>
-
-            </div>
-
-            <div className="service-grid">
-
-              {services.map((service, index) => (
-                <motion.article
-                  className="service-card"
-                  key={service.title}
-                  initial={{
-                    opacity: 0,
-                    y: 25,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                  }}
-                  transition={{
-                    delay: index * 0.08,
-                  }}
-                >
-
-                  <div className="service-image">
-
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                    />
-
-                    <span className="service-number">
-                      0{index + 1}
-                    </span>
-
-                  </div>
-
-                  <div className="service-content">
-
-                    <h3>
-                      {service.title}
-                    </h3>
-
-                    <p>
-                      {service.short}
-                    </p>
-
-                    <a href="#contact">
-                      Enquire
-                      <ArrowRight size={16} />
-                    </a>
-
-                  </div>
-
-                </motion.article>
-              ))}
-
-            </div>
-
-          </div>
-        </section>
-
-        {/* ================= CAPABILITIES ================= */}
-
-        <section className="capability section">
-
-          <div className="container capability-box">
-
-            <div className="capability-copy">
-
-              <div className="section-kicker light">
-                WHY CHOOSE US
-              </div>
-
-              <h2>
-                Everything your
-                <span> packaging needs.</span>
-              </h2>
-
-              <p>
-                A simple, direct and business-focused
-                presentation of the company's printing
-                and packaging capabilities.
-              </p>
-
-              <a
-                className="btn btn-white"
-                href="#contact"
+              <div
+                className={`benefit benefit-${index}`}
+                key={title}
               >
-                Start an Enquiry
-                <Send size={17} />
-              </a>
 
-            </div>
+                <Icon />
 
-            <div className="capability-list">
+                <div>
 
-              {capabilities.map((item) => (
-                <div
-                  className="capability-item"
-                  key={item}
-                >
-                  <CheckCircle2 size={21} />
+                  <b>{title}</b>
 
-                  <span>
-                    {item}
-                  </span>
+                  <span>{text}</span>
+
                 </div>
-              ))}
 
-            </div>
+              </div>
+
+            ))}
 
           </div>
 
         </section>
 
-        {/* ================= PROCESS ================= */}
 
+        {/* SERVICES */}
         <section
-          className="process section"
-          id="process"
+          id="services"
+          className="section services-section"
         >
+
           <div className="container">
 
             <div className="section-heading centered">
 
-              <div>
-                <div className="section-kicker">
-                  OUR APPROACH
-                </div>
+              <span className="kicker">
+                WHAT WE DO
+              </span>
 
-                <h2>
-                  Simple process.
-                  <span> Clear results.</span>
-                </h2>
-              </div>
+              <h2>
+                Our Packaging{" "}
+                <span>Solutions</span>
+              </h2>
 
               <p>
-                A straightforward approach from
-                requirement to production.
+                Focused capabilities for printed packaging,
+                premium finishing and corrugated box requirements.
               </p>
 
             </div>
 
-            <div className="process-grid">
 
-              {processSteps.map((step) => (
-                <div
-                  className="process-item"
-                  key={step.number}
-                >
+            <div className="service-grid">
 
-                  <span>
-                    {step.number}
-                  </span>
+              <AnimatePresence mode="popLayout">
 
-                  <div>
+                {filteredServices.map((service, index) => {
+
+                  const Icon = service.icon;
+
+                  return (
+                    <motion.article
+                      className="service-card"
+                      key={service.title}
+                      layout
+                      initial={{
+                        opacity: 0,
+                        y: 15,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                      }}
+                      exit={{
+                        opacity: 0,
+                      }}
+                      transition={{
+                        delay: index * 0.05,
+                      }}
+                    >
+
+                      <div className="service-image">
+
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                        />
+
+                        <span>
+                          <Icon size={16} />
+                          {service.tag}
+                        </span>
+
+                      </div>
+
+
+                      <div className="service-content">
+
+                        <small>
+                          0{index + 1}
+                        </small>
+
+                        <h3>
+                          {service.title}
+                        </h3>
+
+                        <button
+                          onClick={() => scrollTo("contact")}
+                        >
+                          Enquire
+                          <ArrowRight size={15} />
+                        </button>
+
+                      </div>
+
+                    </motion.article>
+                  );
+
+                })}
+
+              </AnimatePresence>
+
+            </div>
+
+
+            {filteredServices.length === 0 && (
+
+              <div className="empty">
+                No matching service found.
+                Try "carton", "printing", "foil"
+                or "corrugated".
+              </div>
+
+            )}
+
+          </div>
+
+        </section>
+
+
+        {/* CAPABILITIES */}
+        <section
+          id="capabilities"
+          className="section capabilities-section"
+        >
+
+          <div className="container split">
+
+            <div className="section-heading">
+
+              <span className="kicker">
+                WHY DWARIKA DHEESH
+              </span>
+
+              <h2>
+                A packaging partner built around{" "}
+                <span>your product.</span>
+              </h2>
+
+              <p>
+                We keep the offering clear and practical:
+                manufacturing, printing and finishing
+                capabilities that help turn packaging
+                requirements into a finished product.
+              </p>
+
+              <button
+                className="outline"
+                onClick={() => scrollTo("contact")}
+              >
+                Start a Packaging Enquiry
+                <ArrowRight size={17} />
+              </button>
+
+            </div>
+
+
+            <div className="cap-grid">
+
+              {capabilities.map(
+                ([title, text], index) => (
+
+                  <motion.div
+                    className="cap-card"
+                    key={title}
+                    whileHover={{
+                      y: -5,
+                    }}
+                  >
+
+                    <span>
+                      0{index + 1}
+                    </span>
+
                     <h3>
-                      {step.title}
+                      {title}
                     </h3>
 
                     <p>
-                      {step.text}
+                      {text}
                     </p>
-                  </div>
 
-                </div>
-              ))}
+                  </motion.div>
+
+                )
+              )}
 
             </div>
 
           </div>
+
         </section>
 
-        {/* ================= CONTACT ================= */}
 
+        {/* ABOUT */}
         <section
-          className="cta section"
-          id="contact"
+          id="about"
+          className="about-strip"
         >
 
-          <div className="container cta-box">
+          <div className="container about-inner">
 
             <div>
 
-              <div className="section-kicker">
-                LET'S WORK TOGETHER
-              </div>
+              <span className="kicker">
+                ABOUT THE BUSINESS
+              </span>
 
               <h2>
-                Have a packaging
-                <span> requirement?</span>
+                One destination for all your{" "}
+                <span>packaging needs.</span>
+              </h2>
+
+            </div>
+
+
+            <p>
+              Dwarika Dheesh Print Packaging is presented
+              as a manufacturing-focused packaging partner,
+              with services spanning folding/mono cartons,
+              offset printing, foil printing and corrugated
+              boxes with printing.
+            </p>
+
+          </div>
+
+        </section>
+
+
+        {/* PROCESS */}
+        <section
+          id="process"
+          className="section process-section"
+        >
+
+          <div className="container">
+
+            <div className="section-heading centered">
+
+              <span className="kicker">
+                SIMPLE WORKFLOW
+              </span>
+
+              <h2>
+                From requirement to{" "}
+                <span>ready packaging.</span>
               </h2>
 
               <p>
-                Tell us what you need and our team can
-                discuss the right printing or packaging
-                solution with you.
+                A straightforward four-step flow keeps
+                communication and execution easy.
               </p>
 
             </div>
 
+
+            <div className="steps">
+
+              {steps.map(
+                ([number, title, text]) => (
+
+                  <div
+                    className="step"
+                    key={number}
+                  >
+
+                    <span>
+                      {number}
+                    </span>
+
+                    <div>
+
+                      <h3>
+                        {title}
+                      </h3>
+
+                      <p>
+                        {text}
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                )
+              )}
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        {/* CONTACT */}
+        <section
+          id="contact"
+          className="contact-section"
+        >
+
+          <div className="container contact-card">
+
+            <div>
+
+              <span className="kicker">
+                LET'S BUILD IT
+              </span>
+
+              <h2>
+                Have a packaging requirement?
+              </h2>
+
+              <p>
+                Tell us what you need and use the
+                enquiry button to start the conversation.
+              </p>
+
+            </div>
+
+
             <div className="contact-actions">
 
               <a
-                className="btn btn-primary"
-                href="tel:+910000000000"
+                className="primary"
+                href="mailto:info@example.com?subject=Packaging%20Enquiry"
               >
-                <Phone size={18} />
-                Call Us
+                <Mail size={18} />
+                Send Enquiry
               </a>
 
+
               <a
-                className="btn btn-dark"
-                href="mailto:info@example.com"
+                className="contact-link"
+                href="tel:+910000000000"
               >
-                <Send size={18} />
-                Send Enquiry
+                <Phone size={17} />
+                Call Business
               </a>
 
             </div>
@@ -607,57 +797,47 @@ function App() {
 
       </main>
 
-      {/* ================= FOOTER ================= */}
 
-      <footer className="footer">
+      {/* FOOTER */}
+      <footer>
 
         <div className="container footer-inner">
 
-          <div className="footer-brand">
+          <div>
 
-            <div className="brand-mark">
-              DD
-            </div>
+            <b>
+              DWARIKA DHEESH
+            </b>
 
-            <div>
-              <strong>
-                DWARIKA DHEESH
-              </strong>
-
-              <span>
-                PRINT PACKAGING
-              </span>
-            </div>
+            <span>
+              PRINT PACKAGING
+            </span>
 
           </div>
+
 
           <p>
-            One Destination For All Your Packaging Needs.
+            Manufacturing • Printing • Packaging Solutions
           </p>
 
-          <div className="footer-links">
 
-            <a href="#home">
-              Home
-            </a>
-
-            <a href="#about">
-              About
-            </a>
-
-            <a href="#solutions">
-              Solutions
-            </a>
-
-            <a href="#contact">
-              Contact
-            </a>
-
-          </div>
+          <span>
+            © {new Date().getFullYear()} Dwarika Dheesh Print Packaging
+          </span>
 
         </div>
 
       </footer>
+
+
+      {/* WHATSAPP */}
+      <a
+        className="floating-wa"
+        href="https://wa.me/910000000000"
+        aria-label="WhatsApp"
+      >
+        <MessageCircle />
+      </a>
 
     </div>
   );
