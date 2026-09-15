@@ -1,0 +1,132 @@
+.corrugated-section {
+  padding-top: 80px;
+  padding-bottom: 90px;
+}
+
+.corrugated-shell {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 26px;
+  align-items: center;
+}
+
+.corrugated-copy h2 {
+  margin: 0;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  letter-spacing: -0.06em;
+  line-height: 1.04;
+}
+
+.corrugated-copy p:last-child {
+  margin-top: 18px;
+  color: rgba(226,232,240,0.72);
+  line-height: 1.8;
+}
+
+.corrugated-list {
+  list-style: none;
+  padding: 0;
+  margin: 22px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.corrugated-list li {
+  position: relative;
+  padding-left: 18px;
+  color: rgba(226,232,240,0.9);
+}
+
+.corrugated-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.corrugated-visual {
+  position: relative;
+  min-height: 420px;
+  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(13,17,23,1), rgba(7,10,14,1));
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+
+.corrugated-box {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 330px;
+  height: 260px;
+  transform: translate(-50%, -50%) rotate(-18deg);
+}
+
+.corrugated-face {
+  position: absolute;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+}
+
+.corrugated-face.front {
+  inset: 42px 0 0 0;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.04) 10px,
+    rgba(255,255,255,0.01) 10px,
+    rgba(255,255,255,0.01) 20px
+  );
+}
+
+.corrugated-face.side {
+  width: 34px;
+  height: calc(100% - 30px);
+  right: -20px;
+  top: 26px;
+  transform: skewY(-28deg);
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255,255,255,0.03),
+    rgba(255,255,255,0.03) 8px,
+    rgba(255,255,255,0.01) 8px,
+    rgba(255,255,255,0.01) 16px
+  );
+}
+
+.corrugated-face.top {
+  left: 16px;
+  top: 0;
+  width: calc(100% - 26px);
+  height: 42px;
+  transform: skewX(-48deg);
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(245,158,11,0.2),
+    rgba(245,158,11,0.2) 10px,
+    rgba(255,255,255,0.03) 10px,
+    rgba(255,255,255,0.03) 20px
+  );
+}
+
+.corrugated-face.inner {
+  inset: 26px 24px 18px 28px;
+  border-radius: 12px;
+  background: transparent;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+@media (max-width: 820px) {
+  .corrugated-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .corrugated-box {
+    width: 260px;
+    height: 210px;
+  }
+}

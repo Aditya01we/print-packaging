@@ -1,0 +1,149 @@
+/* =========================================
+   BASE INDUSTRIAL BUTTON
+========================================= */
+.dd-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 999px;
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
+  border: 1px solid transparent;
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* =========================================
+   SIZES
+========================================= */
+.dd-button.size-sm {
+  padding: 8px 16px;
+  font-size: 10px;
+}
+
+.dd-button.size-md {
+  padding: 12px 24px;
+  font-size: 11.5px;
+}
+
+.dd-button.size-lg {
+  padding: 15px 32px;
+  font-size: 13px;
+}
+
+/* =========================================
+   VARIANTS
+========================================= */
+/* Primary Orange Gradient */
+.dd-button.variant-primary {
+  background: linear-gradient(135deg, #ff9736 0%, #ff7a00 100%);
+  color: #000000;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 18px rgba(255, 122, 0, 0.28);
+}
+
+.dd-button.variant-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #ffa44d 0%, #ff881a 100%);
+  box-shadow: 0 6px 24px rgba(255, 122, 0, 0.45);
+}
+
+/* Secondary Dark Glass */
+.dd-button.variant-secondary {
+  background: rgba(255, 255, 255, 0.04);
+  color: #e0e0e0;
+  border-color: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.dd-button.variant-secondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.09);
+  color: #ffffff;
+  border-color: rgba(255, 138, 31, 0.5);
+  box-shadow: 0 0 18px rgba(255, 138, 31, 0.15);
+}
+
+/* Outline Subtle Accent */
+.dd-button.variant-outline {
+  background: transparent;
+  color: #ff8a1f;
+  border-color: rgba(255, 138, 31, 0.4);
+}
+
+.dd-button.variant-outline:hover:not(:disabled) {
+  background: rgba(255, 138, 31, 0.1);
+  border-color: #ff8a1f;
+  box-shadow: 0 0 16px rgba(255, 138, 31, 0.2);
+}
+
+/* =========================================
+   METALLIC SHEEN EFFECT & ICONS
+========================================= */
+.btn-sheen-sweep {
+  position: absolute;
+  top: -50%;
+  left: -120%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.35),
+    transparent
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: left 0.6s ease;
+}
+
+.dd-button:hover:not(:disabled) .btn-sheen-sweep {
+  left: 200%;
+}
+
+.btn-content {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-icon-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.dd-button:hover:not(:disabled) .btn-icon-wrapper {
+  transform: translate(2px, -2px);
+}
+
+/* Disabled state */
+.dd-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+@media (prefers-reduced-motion: reduce) {
+  .btn-sheen-sweep {
+    display: none;
+  }
+
+  .dd-button,
+  .btn-icon-wrapper {
+    transition: none !important;
+  }
+}
