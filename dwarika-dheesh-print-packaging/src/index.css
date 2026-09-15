@@ -1,3 +1,35 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
-:root { --bg:#070a10; --panel:#0c111a; --card:#111722; --gold:#f59e0b; --text:#f8fafc; --muted:#94a3b8; --border:rgba(255,255,255,.1); }
-* { box-sizing:border-box; } html { scroll-behavior:smooth; } body { margin:0; background:var(--bg); color:var(--text); font-family:Manrope,sans-serif; } button,input,select,textarea { font:inherit; } button { cursor:pointer; }.container { width:min(1120px,calc(100% - 32px)); margin:0 auto; }.section { padding:80px 0; }.eyebrow { color:var(--gold); font-size:11px; font-weight:800; letter-spacing:1.8px; margin:0 0 10px; }.section-title { max-width:680px; margin-bottom:32px; }.section-title h2 { font-size:clamp(30px,4vw,46px); line-height:1.1; margin:0; }.section-title h2 span { color:var(--gold); }.section-title p { color:var(--muted); font-size:14px; line-height:1.7; } @media(max-width:600px){.section{padding:60px 0}}
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+	--bg: #0b1117;
+	--panel: #111a22;
+	--card: #15222b;
+	--elevated: #1a2b35;
+	--gold: #c89442;
+	--gold-bright: #e0b66b;
+	--mint: #7cc7bb;
+	--text: #edf3f1;
+	--muted: #9aabb0;
+	--border: rgba(188, 214, 211, 0.16);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--text);
+	font-family: "DM Sans", sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+h1, h2, h3, h4, .brand-title, .nav-link { font-family: "Space Grotesk", sans-serif; }
+.container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+.section { padding: 80px 0; }
+.eyebrow { color: var(--gold); font-size: 11px; font-weight: 700; letter-spacing: 1.8px; margin: 0 0 10px; }
+.section-title { max-width: 680px; margin-bottom: 32px; }
+.section-title h2 { font-size: clamp(30px, 4vw, 46px); line-height: 1.1; margin: 0; }
+.section-title h2 span { color: var(--gold-bright); }
+.section-title p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+@media (max-width: 600px) { .section { padding: 60px 0; } }
