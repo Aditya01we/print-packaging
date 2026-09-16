@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Home from "./screens/Home/Home";
@@ -11,10 +11,34 @@ import Process from "./screens/Process/Process";
 import Contact from "./screens/Contact/Contact";
 import Quote from "./screens/Quote/Quote";
 
+const getSectionFromHash = () => window.location.hash.replace("#", "") || "home";
+
 function App() {
+  const [activeSection, setActiveSection] = useState(getSectionFromHash);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const section = getSectionFromHash();
+      setActiveSection(section);
+      requestAnimationFrame(() => document.getElementById(section)?.scrollIntoView({ behavior: "smooth" }));
+    };
+
+    handleHashChange();
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const navigateTo = (target) => {
+    if (window.location.hash !== `#${target}`) {
+      window.history.pushState({}, "", `#${target}`);
+    }
+    setActiveSection(target);
+    document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="app-shell">
-      <Navbar />
+      <Navbar onNavigate={navigateTo} activeSection={activeSection} />
 
       <main>
         <Home />

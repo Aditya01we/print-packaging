@@ -44,6 +44,19 @@
   user-select: none;
 }
 
+.brand-logo {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.28));
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover .brand-logo {
+  transform: rotate(-3deg) scale(1.04);
+}
+
 .brand-badge {
   width: 36px;
   height: 36px;

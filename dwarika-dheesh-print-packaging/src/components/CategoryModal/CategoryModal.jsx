@@ -28,7 +28,9 @@ const CategoryModal = ({ category, onClose }) => {
 
             <div className="modal-visual">
               <div className="modal-visual-glow" />
-              <div className="modal-visual-box" />
+              {category.image && (
+                <img className="modal-product-image" src={category.image} alt={`${category.title} packaging`} />
+              )}
               <span className="modal-visual-tag">{category.number}</span>
             </div>
 

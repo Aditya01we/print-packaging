@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
 import { navigation } from "../../data/navigation";
+import brandLogo from "../../assets/logo.svg";
 import "./Navbar.css";
 export default function Navbar({ onNavigate, activeSection = "home" }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,14 +25,14 @@ export default function Navbar({ onNavigate, activeSection = "home" }) {
   return (
     <header className={`navbar-header ${isScrolled ? "scrolled" : ""}`}>
       <div className="navbar-container">
-        {/* Brand / Logo (Pure Typography & Micro Accents - No Images) */}
+        {/* Brand / Logo */}
         <div
           className="navbar-brand"
           onClick={() => handleLinkClick("home")}
           role="button"
           tabIndex={0}
         >
-          <div className="brand-badge">DD</div>
+          <img className="brand-logo" src={brandLogo} alt="Dwarika Dheesh Print Packaging" />
           <div className="brand-text-group">
             <span className="brand-title">DWARIKA DHEESH</span>
             <span className="brand-subtitle">PRINT PACKAGING</span>

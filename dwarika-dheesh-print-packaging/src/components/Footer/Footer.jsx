@@ -134,7 +134,7 @@ export default function Footer({ onNavigate = () => {} }) {
             </div>
             <div className="contact-item">
               <Mail size={16} className="contact-icon" />
-              <span>enquiry@dwarikadheesh.com</span>
+              <a href="mailto:dwarikadheeshprint@gmail.com">dwarikadheeshprint@gmail.com</a>
             </div>
             <div className="contact-item">
               <Phone size={16} className="contact-icon" />

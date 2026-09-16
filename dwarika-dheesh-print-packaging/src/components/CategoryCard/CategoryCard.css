@@ -119,6 +119,57 @@
   opacity: 0.6;
 }
 
+.category-product-image {
+  position: absolute;
+  inset: 12px;
+  width: calc(100% - 32px);
+  height: calc(100% - 24px);
+  object-fit: contain;
+  border-radius: 16px;
+  object-position: center;
+  filter: saturate(1.08) contrast(1.04);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.22);
+}
+
+.category-fallback-box {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  transform: perspective(600px) rotateX(18deg) rotateY(-22deg) rotateZ(-14deg);
+}
+
+.fallback-box-front,
+.fallback-box-top,
+.fallback-box-side {
+  position: absolute;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+}
+
+.fallback-box-front {
+  inset: 26px 0 0 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+}
+
+.fallback-box-top {
+  left: 16px;
+  top: 0;
+  width: calc(100% - 18px);
+  height: 34px;
+  transform: skewX(-48deg);
+  background: linear-gradient(90deg, rgba(245,158,11,0.2), rgba(255,255,255,0.04));
+}
+
+.fallback-box-side {
+  right: -18px;
+  top: 20px;
+  width: 30px;
+  height: calc(100% - 28px);
+  transform: skewY(-30deg);
+  background: linear-gradient(180deg, rgba(245,158,11,0.16), rgba(255,255,255,0.04));
+}
+
 .category-visual-glow {
   position: absolute;
   width: 130px;

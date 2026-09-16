@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Dwarika Dheesh Print Packaging favicon">
+  <rect width="512" height="512" fill="#f5f5f5"/>
+
+  <g transform="translate(12 8)">
+    <path d="M76 42h120c114 0 198 76 198 214S310 470 196 470H76V42zm86 70v258h25c72 0 120-40 120-129s-48-129-120-129h-25z" fill="#0d3b73"/>
+    <path d="M238 42h120c114 0 198 76 198 214S472 470 358 470H238V42zm86 70v258h25c72 0 120-40 120-129s-48-129-120-129h-25z" fill="#0d3b73"/>
+
+    <path d="M162 164c0-9 7-16 16-16h40c9 0 16 7 16 16v36h-46v31h34c9 0 16 7 16 16v34c0 9-7 16-16 16h-34v66c0 9-7 16-16 16h-40c-9 0-16-7-16-16v-66h-30c-9 0-16-7-16-16v-34c0-9 7-16 16-16h30v-31h-46c-9 0-16-7-16-16v-36c0-9 7-16 16-16h46v-18c0-9 7-16 16-16h40c9 0 16 7 16 16v18h46v-18c0-9 7-16 16-16h40c9 0 16 7 16 16v18h46c9 0 16 7 16 16v36c0 9-7 16-16 16h-46v31h30c9 0 16 7 16 16v34c0 9-7 16-16 16h-30v66c0 9-7 16-16 16h-40c-9 0-16-7-16-16v-66h-34c-9 0-16-7-16-16v-34c0-9 7-16 16-16h34v-31h-46v31h-34c-9 0-16-7-16-16v-34c0-9 7-16 16-16h34v-31h-46z" fill="#fff" opacity="0.9"/>
+
+    <g transform="translate(260 128)">
+      <circle cx="0" cy="0" r="118" fill="#fff" stroke="#0d3b73" stroke-width="10"/>
+      <circle cx="0" cy="0" r="88" fill="none" stroke="#0d3b73" stroke-width="4"/>
+      <circle cx="0" cy="0" r="56" fill="#fff"/>
+      <path d="M0 -78 L0 78 M-78 0 L78 0" stroke="#0d3b73" stroke-width="5" stroke-linecap="round"/>
+      <path d="M-10 -40 L10 -40 L10 40 L-10 40 Z" fill="#fdbb2a"/>
+      <path d="M-40 -10 L40 -10 L40 10 L-40 10 Z" fill="#00aef0"/>
+      <circle cx="0" cy="0" r="46" fill="none" stroke="#0d3b73" stroke-width="7"/>
+      <circle cx="0" cy="0" r="8" fill="#0d3b73"/>
+      <circle cx="0" cy="0" r="24" fill="none" stroke="#0d3b73" stroke-width="2"/>
+    </g>
+
+    <path d="M130 322C210 260 290 262 390 312C420 327 444 340 470 350L453 390C432 379 405 367 372 354C301 324 220 326 148 374L130 322Z" fill="#ff2a76" opacity="0.92"/>
+    <path d="M130 336C225 286 313 292 402 334C433 349 455 362 470 370L453 404C433 392 406 379 373 368C301 340 227 341 152 388L130 336Z" fill="#14b4ff" opacity="0.88"/>
+    <path d="M130 350C225 314 318 324 402 364C427 376 450 387 470 395L453 432C431 420 404 408 371 394C302 368 230 367 154 406L130 350Z" fill="#f7c636" opacity="0.95"/>
+  </g>
+</svg>

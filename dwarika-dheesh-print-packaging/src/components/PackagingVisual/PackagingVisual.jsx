@@ -1,29 +1,27 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Box, Sparkles } from "lucide-react";
+import productHero from "../../assets/img2.png";
 import "./PackagingVisual.css";
 
 const PackagingVisual = () => {
   return (
     <motion.div
       className="packaging-visual"
-      initial={{ rotate: -6, y: 20 }}
-      animate={{ rotate: 0, y: 0 }}
-      transition={{ duration: 0.8 }}
-      whileHover={{ rotate: 1.5, scale: 1.01 }}
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7 }}
     >
       <div className="packaging-grid" />
       <div className="packaging-glow" />
       <div className="packaging-lights" />
 
       <motion.div
-        className="packaging-box-box"
+        className="packaging-photo-stage"
         animate={{ y: [0, -14, 0], rotate: [0, 2, 0] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
       >
-        <div className="packaging-box-face packaging-box-front" />
-        <div className="packaging-box-face packaging-box-side" />
-        <div className="packaging-box-face packaging-box-top" />
+        <img src={productHero} alt="Packaging product sample" className="packaging-photo" />
       </motion.div>
 
       <motion.div

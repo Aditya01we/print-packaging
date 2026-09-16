@@ -52,6 +52,17 @@
   box-shadow: inset 0 0 28px rgba(245,158,11,0.08);
 }
 
+.modal-product-image {
+  position: absolute;
+  inset: 30px;
+  width: calc(100% - 60px);
+  height: calc(100% - 60px);
+  object-fit: contain;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.96);
+  z-index: 1;
+}
+
 .modal-visual-tag {
   position: absolute;
   top: 22px;

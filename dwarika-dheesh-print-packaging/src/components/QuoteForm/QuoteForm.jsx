@@ -52,6 +52,11 @@ const QuoteForm = () => {
 
     if (!validate()) return;
 
+    const subject = encodeURIComponent(`Packaging enquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nCompany: ${formData.company}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nCategory: ${formData.packagingCategory}\nRequirement: ${formData.requirement}\nQuantity: ${formData.quantity}\nMessage: ${formData.message}`,
+    );
+    window.location.href = `mailto:dwarikadheeshprint@gmail.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
     setFormData(initialState);
     setErrors({});
