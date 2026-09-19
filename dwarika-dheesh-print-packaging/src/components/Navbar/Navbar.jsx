@@ -63,13 +63,13 @@ export default function Navbar() {
       <div className="navbar-main">
         <div className="container navbar-container">
           {/* Brand Logo */}
-          <Link to="/" className="navbar-brand" aria-label="Bison Packaging Home">
+          <Link to="/" className="navbar-brand" aria-label="Dwarika Dheesh Packaging Home">
             <div className="brand-logo-icon">
               <Package className="logo-gear" size={24} />
             </div>
             <div className="brand-text">
-              <span className="brand-title">BISON PACKAGING</span>
-              <span className="brand-sub">CUSTOM PACKAGING & PRINTING</span>
+              <span className="brand-title">DWARIKA DHEESH</span>
+              <span className="brand-sub">PRINT & PACKAGING</span>
             </div>
           </Link>
 
@@ -165,7 +165,7 @@ export default function Navbar() {
             to="/about" 
             className={({ isActive }) => `mobile-nav-item ${isActive ? "active" : ""}`}
           >
-            About Bison Packaging
+            About Dwarika Dheesh
           </NavLink>
           <NavLink 
             to="/products" 
@@ -199,7 +199,7 @@ export default function Navbar() {
             className="mobile-nav-item mobile-btn-link"
             onClick={() => handleSectionClick("why-choose-us")}
           >
-            Why Choose Bison Packaging
+            Why Choose Dwarika Dheesh
           </button>
           <NavLink 
             to="/contact" 

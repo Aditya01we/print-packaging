@@ -56,3 +56,4 @@ export const cardStockOptions = [
     description: "Delicate cross-hatch fabric weave embossed directly onto heavy paperboard, creating a bespoke, handcrafted sensory touch."
   }
 ];
+

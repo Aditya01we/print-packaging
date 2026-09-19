@@ -29,7 +29,7 @@ export default function About() {
             <span className="crumb-divider">/</span>
             <span className="crumb-current">About Us</span>
           </div>
-          <h1 className="page-hero-title">About Bison Packaging</h1>
+          <h1 className="page-hero-title">About Dwarika Dheesh Packaging</h1>
           <p className="page-hero-subtitle">
             A fanatical packaging house committed to delivering fully customizable packaging solutions with unique designs, premium materials, and endless customer service support.
           </p>

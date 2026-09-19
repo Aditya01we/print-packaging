@@ -1,6 +1,6 @@
 export const companyDetails = {
-  name: "Bison Packaging",
-  shortName: "Bison Packaging",
+  name: "Dwarika Dheesh Print Packaging",
+  shortName: "Dwarika Dheesh Packaging",
   tagline: "Your Custom Packaging & Printing Partner",
   description: "Specializing in custom printed packaging boxes, cosmetic cartons, candle boxes, soap packaging, mylar pouches, corrugated mailers, and luxury rigid boxes with free design support, zero die/plate charges, and fast domestic turnaround.",
   
@@ -9,14 +9,14 @@ export const companyDetails = {
   phoneRaw: "+18707448331",
   alternatePhone: "870 744 8332",
   
-  email: "sales@bisonpackaging.com",
-  supportEmail: "support@bisonpackaging.com",
+  email: "sales@dwarikadheeshpackaging.com",
+  supportEmail: "support@dwarikadheeshpackaging.com",
   
   whatsappPhone: "18707448331",
-  whatsappDefaultMessage: "Hello Bison Packaging team, I would like to get a quote for custom packaging boxes and mylar bags for domestic delivery.",
+  whatsappDefaultMessage: "Hello Dwarika Dheesh Packaging team, I would like to get a quote for custom packaging boxes and mylar bags for domestic delivery.",
   
   address: {
-    line1: "Bison Packaging Production Facility & Design Studio",
+    line1: "Dwarika Dheesh Packaging Production Facility & Design Studio",
     line2: "Industrial Packaging Parkway",
     city: "Jonesboro",
     state: "AR",

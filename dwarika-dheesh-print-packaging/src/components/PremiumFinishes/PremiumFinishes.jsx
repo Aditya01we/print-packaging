@@ -19,7 +19,7 @@ export default function PremiumFinishes() {
           </div>
           <h2 className="section-title">Premium Finishes</h2>
           <p className="section-subtitle">
-            At Bison Packaging, we offer a wide variety of luxurious, high-end finishes that will make the beauty of your packaging stand out. Glossy, matte coats to embossing and foil stamping are some finishes that take your professionalism a notch up, and help your products get ceded attention.
+            At Dwarika Dheesh Packaging, we offer a wide variety of luxurious, high-end finishes that will make the beauty of your packaging stand out. Glossy, matte coats to embossing and foil stamping are some finishes that take your professionalism a notch up, and help your products get ceded attention.
           </p>
         </div>
       </div>
@@ -101,3 +101,4 @@ export default function PremiumFinishes() {
     </section>
   );
 }
+

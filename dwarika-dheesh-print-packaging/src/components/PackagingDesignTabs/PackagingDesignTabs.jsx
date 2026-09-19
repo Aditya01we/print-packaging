@@ -12,7 +12,7 @@ const tabsData = [
     image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=1000&q=80",
     imageAlt: "Vibrant Custom Printed Packaging Boxes and Geometry Mockups",
     description:
-      "Bison Packaging is a company that specializes in custom packaging design and production. We offer a wide range of packaging solutions for various industries, including food, cosmetics, electronics, and more. We provide a comprehensive custom packaging design service that begins with understanding the client's requirements and objectives. We work closely with our clients to create a packaging design that not only looks appealing but also functions well and meets the desired specifications. We have a team of skilled designers who use the latest software and technology to create unique and eye-catching packaging designs. We can create custom packaging designs for boxes, bags, labels, and more.",
+      "Dwarika Dheesh Packaging is a company that specializes in custom packaging design and production. We offer a wide range of packaging solutions for various industries, including food, cosmetics, electronics, and more. We provide a comprehensive custom packaging design service that begins with understanding the client's requirements and objectives. We work closely with our clients to create a packaging design that not only looks appealing but also functions well and meets the desired specifications. We have a team of skilled designers who use the latest software and technology to create unique and eye-catching packaging designs. We can create custom packaging designs for boxes, bags, labels, and more.",
     features: [
       "Custom dieline templates & precise structural engineering",
       "Complimentary 3D digital visual proofs prior to manufacturing",
@@ -30,7 +30,7 @@ const tabsData = [
     image: "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1000&q=80",
     imageAlt: "Premium High Quality Protective Cardboard Packaging Boxes",
     description:
-      "High quality doesn't have to mean exorbitant costs. Bison Packaging is committed to delivering worthwhile, cost-effective packaging solutions without cutting corners on durability or print precision. From short-run prototype packaging for emerging domestic brands to large wholesale production runs, our streamlined domestic manufacturing workflow eliminates unnecessary middlemen and markups. Every box is crafted with premium food-safe or luxury retail grade paperboard, ensuring unmatched structural integrity that protects your products while maximizing return on investment.",
+      "High quality doesn't have to mean exorbitant costs. Dwarika Dheesh Packaging is committed to delivering worthwhile, cost-effective packaging solutions without cutting corners on durability or print precision. From short-run prototype packaging for emerging domestic brands to large wholesale production runs, our streamlined domestic manufacturing workflow eliminates unnecessary middlemen and markups. Every box is crafted with premium food-safe or luxury retail grade paperboard, ensuring unmatched structural integrity that protects your products while maximizing return on investment.",
     features: [
       "Tiered wholesale volume discounts on domestic production",
       "Rigid crush-tested fluting and scratch-resistant finishes",
@@ -84,7 +84,7 @@ export default function PackagingDesignTabs() {
   const currentTab = tabsData.find((tab) => tab.id === activeTabId) || tabsData[0];
 
   return (
-    <section className="packaging-tabs-section" aria-label="Why Bison Packaging Services">
+    <section className="packaging-tabs-section" aria-label="Why Dwarika Dheesh Packaging Services">
       <div className="container">
         {/* Navigation Tabs Bar */}
         <div className="packaging-tabs-nav" role="tablist">
@@ -149,3 +149,4 @@ export default function PackagingDesignTabs() {
     </section>
   );
 }
+

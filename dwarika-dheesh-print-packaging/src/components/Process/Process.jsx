@@ -50,7 +50,7 @@ const steps = [
 
 export default function Process() {
   return (
-    <section className="process-component-section" id="process" aria-label="Bison Packaging Manufacturing Process">
+    <section className="process-component-section" id="process" aria-label="Dwarika Dheesh Packaging Manufacturing Process">
       <div className="container">
         <div className="section-header">
           <div className="section-eyebrow">OUR STREAMLINED PROCESS</div>

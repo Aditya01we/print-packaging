@@ -6,14 +6,14 @@ import "./About.css";
 
 export default function About({ isDetailed = false }) {
   return (
-    <section className="about-component-section" id="about-overview" aria-label="About Bison Packaging">
+    <section className="about-component-section" id="about-overview" aria-label="About Dwarika Dheesh Packaging">
       <div className="container about-grid">
-        {/* Left Side: Industrial Image and Floating Achievement */}
+        {/* Left Side: Visual Column and Floating Achievement */}
         <div className="about-visual-column">
           <div className="about-image-card">
             <img
               src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=1000&q=80"
-              alt="Bison Packaging Custom Boxes and Rigid Packaging Studio"
+              alt="Dwarika Dheesh Custom Boxes and Rigid Packaging Studio"
               className="about-main-img"
               loading="lazy"
             />
@@ -41,13 +41,13 @@ export default function About({ isDetailed = false }) {
 
         {/* Right Side: Engineering Story & Capabilities */}
         <div className="about-text-column">
-          <div className="section-eyebrow">ABOUT BISON PACKAGING</div>
+          <div className="section-eyebrow">ABOUT DWARIKA DHEESH PACKAGING</div>
           <h2 className="section-title">
             Your Dedicated Partner For High-Impact Custom Packaging & Boxes
           </h2>
 
           <p className="about-intro">
-            At <strong>Bison Packaging</strong>, we are a passionate, full-service packaging house committed to providing brands of all sizes with completely bespoke custom boxes, mailers, mylar bags, and printed retail packaging.
+            At <strong>Dwarika Dheesh Packaging</strong>, we are a passionate, full-service packaging house committed to providing brands of all sizes with completely bespoke custom boxes, mailers, mylar bags, and printed retail packaging.
           </p>
 
           <p className="about-detail">

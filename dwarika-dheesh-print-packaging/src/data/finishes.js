@@ -56,3 +56,4 @@ export const premiumFinishes = [
     description: "Dynamic rainbow iridescent foil shifting colors across different lighting angles to create hypnotic, modern shelf presence."
   }
 ];
+

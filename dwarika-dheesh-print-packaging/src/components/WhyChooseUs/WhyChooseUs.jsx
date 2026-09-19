@@ -56,11 +56,11 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="why-choose-section" id="why-choose-us" aria-label="Why Choose Bison Packaging">
+    <section className="why-choose-section" id="why-choose-us" aria-label="Why Choose Dwarika Dheesh Packaging">
       <div className="container">
         <div className="section-header">
-          <div className="section-eyebrow">THE BISON PACKAGING ADVANTAGE</div>
-          <h2 className="section-title">Why Leading Brands Trust Bison Packaging</h2>
+          <div className="section-eyebrow">THE DWARIKA DHEESH ADVANTAGE</div>
+          <h2 className="section-title">Why Leading Brands Trust Dwarika Dheesh Packaging</h2>
           <p className="section-subtitle">
             From free 3D design assistance and zero die fees to rapid 8-10 days turnaround and free delivery, discover why businesses choose us for their custom boxes and mylar pouches.
           </p>

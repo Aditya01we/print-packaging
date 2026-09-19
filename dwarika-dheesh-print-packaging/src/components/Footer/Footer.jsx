@@ -58,8 +58,8 @@ export default function Footer() {
               <Package size={22} className="footer-logo-gear" />
             </div>
             <div className="footer-brand-title">
-              <span className="footer-brand-name">BISON PACKAGING</span>
-              <span className="footer-brand-sub">CUSTOM PACKAGING & PRINTING</span>
+              <span className="footer-brand-name">DWARIKA DHEESH</span>
+              <span className="footer-brand-sub">PRINT & PACKAGING</span>
             </div>
           </Link>
 
@@ -117,7 +117,7 @@ export default function Footer() {
           <h4 className="footer-col-title">Navigation</h4>
           <ul className="footer-nav-list">
             <li><Link to="/">Home Overview</Link></li>
-            <li><Link to="/about">About Bison Packaging</Link></li>
+            <li><Link to="/about">About Dwarika Dheesh</Link></li>
             <li><Link to="/products">Packaging Catalog</Link></li>
             <li><Link to="/contact">Get Free Custom Quote</Link></li>
             <li><Link to="/about#process">Our 6-Step Process</Link></li>
@@ -218,7 +218,7 @@ export default function Footer() {
             <div className="policy-modal-body">
               {modalPolicy === "Privacy Policy" && (
                 <p>
-                  At Bison Packaging, customer artwork, confidential packaging dimensions, and brand specifications are strictly protected. Your logo files and dieline drawings submitted for quote generation are utilized exclusively for your production run and will never be shared with third parties.
+                  At Dwarika Dheesh Packaging, customer artwork, confidential packaging dimensions, and brand specifications are strictly protected. Your logo files and dieline drawings submitted for quote generation are utilized exclusively for your production run and will never be shared with third parties.
                 </p>
               )}
               {modalPolicy === "Terms & Conditions" && (
@@ -228,7 +228,7 @@ export default function Footer() {
               )}
               {modalPolicy === "Shipping & Returns" && (
                 <p>
-                  Bison Packaging provides 100% free doorstep shipping nationwide across the domestic United States. We back every order with a 100% quality guarantee: if there is any manufacturing or structural defect not matching your approved proof, we will reprint your order promptly.
+                  Dwarika Dheesh Packaging provides 100% free doorstep shipping nationwide across the domestic United States. We back every order with a 100% quality guarantee: if there is any manufacturing or structural defect not matching your approved proof, we will reprint your order promptly.
                 </p>
               )}
             </div>

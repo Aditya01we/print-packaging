@@ -8,7 +8,7 @@ export const faqs = [
   {
     id: 2,
     question: "Do you charge extra fees for die cutting or printing plates?",
-    answer: "No! At Bison Packaging, there are absolutely zero hidden die or printing plate charges. Whether you order standard sizes or completely custom dimensions with unique tuck styles, all cutting dies and setup plates are 100% free.",
+    answer: "No! At Dwarika Dheesh Packaging, there are absolutely zero hidden die or printing plate charges. Whether you order standard sizes or completely custom dimensions with unique tuck styles, all cutting dies and setup plates are 100% free.",
     category: "Pricing & Quotes"
   },
   {
