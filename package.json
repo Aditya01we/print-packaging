@@ -1,5 +1,12 @@
 {
+  "name": "dwarika-dheesh-print-packaging-root",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix dwarika-dheesh-print-packaging run dev",
+    "build": "npm --prefix dwarika-dheesh-print-packaging run build",
+    "preview": "npm --prefix dwarika-dheesh-print-packaging run preview"
+  },
   "devDependencies": {
-    "@vitejs/plugin-react": "^6.1.1"
+    "@vitejs/plugin-react": "^4.3.4"
   }
 }

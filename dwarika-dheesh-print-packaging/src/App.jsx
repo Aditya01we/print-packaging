@@ -1,59 +1,46 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./utils/ScrollToTop";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import Home from "./screens/Home/Home";
-import About from "./screens/About/About";
-import Categories from "./screens/Categories/Categories";
-import Solutions from "./screens/Solutions/Solutions";
-import Foiling from "./screens/Foiling/Foiling";
-import Corrugated from "./screens/Corrugated/Corrugated";
-import Process from "./screens/Process/Process";
-import Contact from "./screens/Contact/Contact";
-import Quote from "./screens/Quote/Quote";
+import FloatingWhatsApp from "./components/FloatingWhatsApp/FloatingWhatsApp";
 
-const getSectionFromHash = () => window.location.hash.replace("#", "") || "home";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+import Products from "./pages/Products/Products";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
+import Contact from "./pages/Contact/Contact";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
-  const [activeSection, setActiveSection] = useState(getSectionFromHash);
-
-  useEffect(() => {
-    const handleHashChange = () => {
-      const section = getSectionFromHash();
-      setActiveSection(section);
-      requestAnimationFrame(() => document.getElementById(section)?.scrollIntoView({ behavior: "smooth" }));
-    };
-
-    handleHashChange();
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
-
-  const navigateTo = (target) => {
-    if (window.location.hash !== `#${target}`) {
-      window.history.pushState({}, "", `#${target}`);
-    }
-    setActiveSection(target);
-    document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
-    <div className="app-shell">
-      <Navbar onNavigate={navigateTo} activeSection={activeSection} />
+    <BrowserRouter>
+      {/* Scroll restoration helper */}
+      <ScrollToTop />
 
-      <main>
-        <Home />
-        <About />
-        <Categories />
-        <Solutions />
-        <Foiling />
-        <Corrugated />
-        <Process />
-        <Quote />
-        <Contact />
-      </main>
+      <div className="app-layout">
+        {/* Sticky Reusable Navbar */}
+        <Navbar />
 
-      <Footer />
-    </div>
+        {/* Dynamic Route Content */}
+        <main className="main-content" id="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+
+        {/* Floating WhatsApp Action Button */}
+        <FloatingWhatsApp />
+
+        {/* Reusable Footer */}
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 

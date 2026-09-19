@@ -1,132 +1,225 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight, Sparkles } from "lucide-react";
-import { navigation } from "../../data/navigation";
-import brandLogo from "../../assets/logo.svg";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, Phone, ArrowRight, Package, Box, Truck } from "lucide-react";
+import { companyDetails } from "../../data/company";
 import "./Navbar.css";
-export default function Navbar({ onNavigate, activeSection = "home" }) {
-  const [isOpen, setIsOpen] = useState(false);
+
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      if (window.scrollY > 30) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleLinkClick = (target) => {
-    onNavigate?.(target);
-    setIsOpen(false);
+  // Close mobile drawer on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname, location.hash]);
+
+  const handleSectionClick = (sectionId) => {
+    setMobileMenuOpen(false);
+    if (location.pathname === "/") {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate(`/#${sectionId}`);
+    }
   };
 
   return (
-    <header className={`navbar-header ${isScrolled ? "scrolled" : ""}`}>
-      <div className="navbar-container">
-        {/* Brand / Logo */}
-        <div
-          className="navbar-brand"
-          onClick={() => handleLinkClick("home")}
-          role="button"
-          tabIndex={0}
-        >
-          <img className="brand-logo" src={brandLogo} alt="Dwarika Dheesh Print Packaging" />
-          <div className="brand-text-group">
-            <span className="brand-title">DWARIKA DHEESH</span>
-            <span className="brand-subtitle">PRINT PACKAGING</span>
+    <header className={`navbar-header ${isScrolled ? "navbar-scrolled" : ""}`}>
+      {/* Top utility bar on desktop */}
+      <div className="navbar-topbar">
+        <div className="container navbar-topbar-inner">
+          <div className="topbar-badge">
+            <Truck size={14} className="topbar-icon" />
+            <span>Free Nationwide Domestic Shipping • 100% Custom Printed Packaging • No Die & Plate Charges</span>
           </div>
-        </div>
-
-        {/* Desktop Navigation Links */}
-        <nav className="navbar-links" aria-label="Main Navigation">
-          {navigation.map((item) => {
-            const isActive = activeSection === item.target;
-
-            return (
-              <button
-                key={item.target}
-                type="button"
-                className={`nav-link ${isActive ? "active" : ""}`}
-                onClick={() => handleLinkClick(item.target)}
-              >
-                <span>{item.label}</span>
-                {isActive && (
-                  <motion.span
-                    layoutId="activeNavIndicator"
-                    className="nav-active-pill"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </button>
-            );
-          })}
-        </nav>
-
-        {/* Desktop CTA Action */}
-        <div className="navbar-cta-group">
-          <button
-            type="button"
-            className="navbar-quote-btn"
-            onClick={() => handleLinkClick("contact")}
-          >
-            <Sparkles size={14} className="cta-icon" />
-            <span>Get A Quote</span>
-            <ArrowUpRight size={14} className="cta-arrow" />
-          </button>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            type="button"
-            className="navbar-hamburger"
-            onClick={() => setIsOpen((prev) => !prev)}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-          >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          <div className="topbar-actions">
+            <span className="topbar-item">Direct Sales & Support:</span>
+            <a href={`tel:${companyDetails.phoneRaw}`} className="topbar-phone">
+              <Phone size={13} />
+              <span>{companyDetails.phone}</span>
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="mobile-drawer"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <div className="mobile-drawer-inner">
-              {navigation.map((item, idx) => (
-                <motion.button
-                  key={item.target}
-                  type="button"
-                  className="mobile-nav-link"
-                  initial={{ opacity: 0, x: -16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.05 }}
-                  onClick={() => handleLinkClick(item.target)}
-                >
-                  <span className="mobile-nav-index">0{idx + 1}</span>
-                  <span className="mobile-nav-label">{item.label}</span>
-                  <ArrowUpRight size={16} className="mobile-nav-arrow" />
-                </motion.button>
-              ))}
-
-              <button
-                type="button"
-                className="mobile-quote-btn"
-                onClick={() => handleLinkClick("contact")}
-              >
-                <span>Request Custom Quote</span>
-                <ArrowUpRight size={16} />
-              </button>
+      {/* Main navigation container */}
+      <div className="navbar-main">
+        <div className="container navbar-container">
+          {/* Brand Logo */}
+          <Link to="/" className="navbar-brand" aria-label="Bison Packaging Home">
+            <div className="brand-logo-icon">
+              <Package className="logo-gear" size={24} />
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <div className="brand-text">
+              <span className="brand-title">BISON PACKAGING</span>
+              <span className="brand-sub">CUSTOM PACKAGING & PRINTING</span>
+            </div>
+          </Link>
+
+          {/* Desktop Nav Links */}
+          <nav className="navbar-desktop-nav" aria-label="Main Navigation">
+            <NavLink 
+              to="/" 
+              className={({ isActive }) => `nav-link ${isActive && !location.hash ? "active" : ""}`}
+              end
+            >
+              Home
+            </NavLink>
+            <NavLink 
+              to="/about" 
+              className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+            >
+              About
+            </NavLink>
+            <NavLink 
+              to="/products" 
+              className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+            >
+              Packaging Boxes
+            </NavLink>
+            <button 
+              type="button" 
+              className="nav-link nav-btn-link"
+              onClick={() => handleSectionClick("finishes")}
+            >
+              Finishes
+            </button>
+            <button 
+              type="button" 
+              className="nav-link nav-btn-link"
+              onClick={() => handleSectionClick("cardstock")}
+            >
+              Card Stock
+            </button>
+            <button 
+              type="button" 
+              className="nav-link nav-btn-link"
+              onClick={() => handleSectionClick("industries")}
+            >
+              Industries
+            </button>
+            <button 
+              type="button" 
+              className="nav-link nav-btn-link"
+              onClick={() => handleSectionClick("why-choose-us")}
+            >
+              Why Us
+            </button>
+            <NavLink 
+              to="/contact" 
+              className={({ isActive }) => `nav-link ${isActive ? "active" : ""}`}
+            >
+              Contact
+            </NavLink>
+          </nav>
+
+          {/* Desktop Right CTA Button */}
+          <div className="navbar-right-actions">
+            <Link to="/contact" className="btn btn-primary nav-quote-btn">
+              <span>Get Free Quote</span>
+              <ArrowRight size={15} />
+            </Link>
+
+            {/* Mobile Hamburger Button */}
+            <button 
+              type="button"
+              className="navbar-hamburger"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-expanded={mobileMenuOpen}
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            >
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Drawer Menu */}
+      <div className={`mobile-nav-drawer ${mobileMenuOpen ? "open" : ""}`} aria-hidden={!mobileMenuOpen}>
+        <div className="mobile-nav-links">
+          <NavLink 
+            to="/" 
+            className={({ isActive }) => `mobile-nav-item ${isActive && !location.hash ? "active" : ""}`}
+            end
+          >
+            Home
+          </NavLink>
+          <NavLink 
+            to="/about" 
+            className={({ isActive }) => `mobile-nav-item ${isActive ? "active" : ""}`}
+          >
+            About Bison Packaging
+          </NavLink>
+          <NavLink 
+            to="/products" 
+            className={({ isActive }) => `mobile-nav-item ${isActive ? "active" : ""}`}
+          >
+            Custom Packaging Boxes & Mylar Bags
+          </NavLink>
+          <button 
+            type="button" 
+            className="mobile-nav-item mobile-btn-link"
+            onClick={() => handleSectionClick("finishes")}
+          >
+            Luxury Premium Finishes
+          </button>
+          <button 
+            type="button" 
+            className="mobile-nav-item mobile-btn-link"
+            onClick={() => handleSectionClick("cardstock")}
+          >
+            Card Stock Variations
+          </button>
+          <button 
+            type="button" 
+            className="mobile-nav-item mobile-btn-link"
+            onClick={() => handleSectionClick("industries")}
+          >
+            Industries We Serve
+          </button>
+          <button 
+            type="button" 
+            className="mobile-nav-item mobile-btn-link"
+            onClick={() => handleSectionClick("why-choose-us")}
+          >
+            Why Choose Bison Packaging
+          </button>
+          <NavLink 
+            to="/contact" 
+            className={({ isActive }) => `mobile-nav-item ${isActive ? "active" : ""}`}
+          >
+            Contact & Free Quotation
+          </NavLink>
+
+          <div className="mobile-drawer-footer">
+            <Link to="/contact" className="btn btn-primary mobile-quote-cta">
+              <span>Get An Instant Packaging Quote</span>
+              <ArrowRight size={16} />
+            </Link>
+            <div className="mobile-support-contact">
+              <span>Direct Sales Desk:</span>
+              <a href={`tel:${companyDetails.phoneRaw}`}>{companyDetails.phone}</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
   );
 }

@@ -1,0 +1,247 @@
+/* Products.css */
+.products-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.catalog-controls-section {
+  padding: 48px 0 96px;
+  background: var(--bg-main);
+}
+
+.controls-box {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: var(--shadow-md);
+}
+
+/* Search Bar */
+.search-bar-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 18px;
+  color: var(--accent-light);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  background: #090D14;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 14px 48px 14px 50px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all var(--transition-fast);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15);
+  background: #0D131F;
+}
+
+.search-input::placeholder {
+  color: var(--text-subtle);
+  font-size: 0.9375rem;
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 16px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.search-clear-btn:hover {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+/* Category Filter Group */
+.category-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-label-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.filter-icon {
+  color: var(--accent-light);
+}
+
+.filter-pills-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-pill-btn {
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-pill-btn:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.filter-pill-btn.active {
+  background: var(--accent);
+  color: #FFFFFF;
+  border-color: var(--accent);
+  box-shadow: 0 2px 10px rgba(234, 88, 12, 0.35);
+  font-weight: 600;
+}
+
+/* Results Status Bar */
+.results-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.result-counter-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.result-counter-badge strong {
+  color: var(--text-primary);
+}
+
+.active-filter-badge {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+  color: var(--accent-light);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.clear-all-filters-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent-light);
+  background: transparent;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.clear-all-filters-btn:hover {
+  text-decoration: underline;
+}
+
+/* Custom Engineering Banner */
+.custom-engineering-banner {
+  padding: 72px 0;
+  background: #080B10;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.custom-eng-inner {
+  background: var(--bg-card);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.eng-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent-light);
+  margin-bottom: 12px;
+}
+
+.custom-eng-text h3 {
+  font-size: clamp(1.4rem, 2.6vw, 1.95rem);
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.custom-eng-text p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.custom-eng-action {
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .custom-eng-inner {
+    flex-direction: column;
+    text-align: center;
+    padding: 36px 24px;
+  }
+
+  .custom-eng-action {
+    width: 100%;
+  }
+
+  .custom-eng-action .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

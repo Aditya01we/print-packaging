@@ -1,0 +1,189 @@
+/* CategorySpotlight.css */
+.category-spotlight-section {
+  padding: 64px 0;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.spotlight-card {
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-medium);
+  transition: all var(--transition-base);
+}
+
+.spotlight-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Themes matching user screenshot */
+.candle-theme {
+  background: linear-gradient(145deg, #182236 0%, #0E1626 100%);
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+.cosmetic-theme {
+  background: linear-gradient(145deg, #2A1D13 0%, #15110E 100%);
+  border-color: rgba(249, 115, 22, 0.35);
+  transform: scale(1.02);
+}
+
+.cosmetic-theme:hover {
+  transform: scale(1.02) translateY(-6px);
+}
+
+.soap-theme {
+  background: linear-gradient(145deg, #192538 0%, #0F1725 100%);
+  border-color: rgba(129, 140, 248, 0.25);
+}
+
+/* Header */
+.spotlight-header {
+  margin-bottom: 20px;
+}
+
+.spotlight-pre {
+  font-family: 'Playfair Display', Georgia, serif, cursive;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #94A3B8;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.spotlight-title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  margin: 0;
+}
+
+.spotlight-badge-title {
+  font-size: 1.85rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  width: fit-content;
+  display: inline-block;
+}
+
+.candle-theme .spotlight-badge-title {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38BDF8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+.cosmetic-theme .spotlight-badge-title {
+  background: #F97316;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
+}
+
+.soap-theme .spotlight-badge-title {
+  background: rgba(99, 102, 241, 0.2);
+  color: #818CF8;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+}
+
+.spotlight-boxes-word {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-top: 6px;
+}
+
+/* Image */
+.spotlight-image-holder {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px 0 24px;
+}
+
+.spotlight-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.5));
+  transition: transform 0.4s ease;
+}
+
+.spotlight-card:hover .spotlight-img {
+  transform: scale(1.08);
+}
+
+/* Footer */
+.spotlight-desc {
+  font-size: 0.875rem;
+  color: #CBD5E1;
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+
+.spotlight-btn {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  justify-content: center;
+}
+
+.candle-theme .spotlight-btn {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38BDF8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.candle-theme .spotlight-btn:hover {
+  background: #38BDF8;
+  color: #0F172A;
+}
+
+.cosmetic-theme .spotlight-btn {
+  background: #F97316;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.4);
+}
+
+.cosmetic-theme .spotlight-btn:hover {
+  background: #EA580C;
+}
+
+.soap-theme .spotlight-btn {
+  background: rgba(99, 102, 241, 0.2);
+  color: #818CF8;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.soap-theme .spotlight-btn:hover {
+  background: #818CF8;
+  color: #0F172A;
+}
+
+@media (max-width: 1024px) {
+  .spotlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cosmetic-theme {
+    transform: none;
+  }
+}

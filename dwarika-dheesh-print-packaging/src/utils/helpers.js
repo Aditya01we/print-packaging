@@ -1,1 +1,0 @@
-export function productMatches(product, query, category) { const text = `${product.name} ${product.category} ${product.description}`.toLowerCase(); return (category === "All" || product.category === category) && text.includes(query.toLowerCase()); }
